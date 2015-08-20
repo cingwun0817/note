@@ -97,5 +97,9 @@ Set title value
 ###輸出
 
 	self.presentViewController(detailView, animated: true, completion: nil)
+	
+###視圖返回上一頁
+
+	dismissViewControllerAnimated(true, completion: nil)
 
 
