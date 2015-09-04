@@ -68,5 +68,25 @@ println:
 * 幾何形狀的大小，封裝一個width屬性和height屬性，兩者均為Double型別。
 * 一定範圍內的路徑，封裝一個start屬性和length屬性，兩者均為Int型別。
 * 三維坐標系內一點，封裝x，y和z屬性，三者均為Double型別。
+
+## 屬性監控 willSet & didSet ##
+
+示例：
+
+	struct Side {
+		var length: Double = 0.0 {
+			//加入屬性監控
+			willSet {
+				println("長度變更前\(length)")
+			}
+	 		didSet {
+				println("長度變更後\(length)")
+			}
+		}
+	}
+	
+
+
+
  
 	
