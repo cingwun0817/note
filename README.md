@@ -1,3 +1,0 @@
-# note
-My note
-Leo
