@@ -1,0 +1,77 @@
+## Scroll View ##
+
+UIScrollView是一個可以作為畫面延展效果的視圖，用途很廣泛，如何在ScrollView加入圖片，並且可以有放大縮小的效果，也可以拖移。
+
+寫法：
+
+* Code
+* AutoLayout
+
+## AutoLayout ##
+
+see [UIScrollView](https://www.youtube.com/watch?v=MORzKyiLk80&list=PLCcp0wsZ2ZnI6rSUvm5-zNsOukSjastvC&index=17)
+
+storyboard:
+
+View > Scroll View > img
+	
+Setp 1:
+	
+Scroll View -> View Controller (delegate)
+
+Setp 2:
+
+Class ViewController: UIViewController, __UIScrollViewDelegate__ {...}
+
+Setp 3:
+
+	func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView?{
+        return image
+    }
+    
+note: 回傳一個 Image
+
+## Code ##
+
+Step 1:
+宣告 scrollView, imageView
+
+	var scrollView: UIScrollView: UIScrollView = UIScrollView()
+	var imageView: UIImageView = UIImageView()
+	
+Step 2:
+設定 ScrollView (in viewDidLoad func)
+	
+	scrollView = UIScrollView(frame: view.bounds) //設定scroll view 大小(長寬)
+	scrollView.delegate = self //設定 delegate
+	scrollView.maximumZoomScale = 5 //設定放大比例
+	
+Step 3:
+設定 ImageView (in viewDidLoad func)
+
+	imageView.frame = CGRectMake(0, 0, scrollView.frame.size.width, scrollView.frame.size.height); //設定 image 大小(長寬)
+	imageView.image = UIImage(named: "...");
+	imageView.contentMode = .ScaleAspectFit //縮放樣式
+	
+Step 4:
+設定ScrollView內容大小
+
+	scrollView.contentSize = imageView.bounds.size
+
+Step 5:
+加入畫面
+
+	view.addSubview(scrollView)
+	scrollView.addSubview(imageView)
+	
+Setp 6:
+
+	func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView?{
+        return imageView
+    }
+	
+
+
+	
+	
+

@@ -1,0 +1,41 @@
+# Yii for Nginx
+```
+server {
+	set $base_path "/home/leo_wang/studio";
+	set $yii_bootstrap "index.php";
+
+	server_name leo.dev.studio.com;
+	root $base_path/webroot/web;
+
+	charset utf-8;
+
+	access_log /home/leo_wang/studio/log/access.log;
+    error_log /home/leo_wang/studio/log/error.log;
+
+    index       index.php;
+
+	location / {
+        # Redirect everything that isn't a real file to index.php
+        try_files $uri $uri/ /index.php?$args;
+    }
+
+	# pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+	location ~ \.php {
+		fastcgi_split_path_info ^(.+\.php)(.*)$;
+
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root/$fastcgi_script_name;
+       	# fastcgi_pass   127.0.0.1:9000;
+        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        try_files $uri =404;
+    }
+
+	location ~ /\.(ht|svn|git) {
+    	deny all;
+	}
+
+}
+
+
+
+```
