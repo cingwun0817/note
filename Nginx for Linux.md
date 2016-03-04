@@ -59,3 +59,11 @@ for fps:
 > apt-get install imagemagick
 
 * convert for anyone and it’s orginal path is /etc/alternatives/convert (黑名單機制，選配)
+
+## SSH use password login
+
+> sudo vi /etc/ssh/sshd_config
+
+### modifity 
+PasswordAuthentication yes
+PubkeyAuthentication no
