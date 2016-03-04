@@ -65,5 +65,5 @@ for fps:
 > sudo vi /etc/ssh/sshd_config
 
 ### modifity 
-PasswordAuthentication yes
+PasswordAuthentication yes    
 PubkeyAuthentication no
