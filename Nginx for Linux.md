@@ -46,6 +46,7 @@ for fps:
 
 ## Add a EBS to this instance which position at /storage/mysql (only on Dev)
 
+> sudo mkfs -t ext4 device_name //初始化硬碟
 > mount /dev/svdf /storage/mysql
 
 ## Install MySQL and set /etc/mysql/my.cnf (only on Dev)
